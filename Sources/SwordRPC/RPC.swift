@@ -28,7 +28,7 @@ extension SwordRPC {
   func send(_ msg: String, _ op: OP) throws {
     let payload = msg.data(using: .utf8)!
 
-    var buffer = UnsafeMutableRawBufferPointer.allocate(count: 8 + payload.count)
+    var buffer = UnsafeMutableRawBufferPointer.allocate(byteCount: payload.count, alignment: 8)
 
     defer { buffer.deallocate() }
 
